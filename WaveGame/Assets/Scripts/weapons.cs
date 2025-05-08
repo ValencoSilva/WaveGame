@@ -46,6 +46,7 @@ public class weapons : MonoBehaviour
         {
             return;
         }
+
         IDamage dmg = other.GetComponent<IDamage>();
         if (dmg !=null&&weaponsType==Weapons.Enemies)
         {
@@ -64,7 +65,7 @@ public class weapons : MonoBehaviour
         isDamaging = true;
         d.takeDamage(damageAmount);
         Debug.Log("Took damage");
-        yield return new WaitForSeconds(damageAmount);
+        yield return new WaitForSeconds(damageRate);
         isDamaging = false;
     }
    

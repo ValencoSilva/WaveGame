@@ -22,6 +22,7 @@ public class playerController : MonoBehaviour , IDamage
         //characterController = GetComponent<CharacterController>();
 
         maxHP = HP;
+        //gameManager.instance.isNotPaused();
         
     }
 
@@ -54,6 +55,7 @@ public class playerController : MonoBehaviour , IDamage
         if (HP <= 0)
         {
             Debug.Log("Bye Bye Bye");
+            gameManager.instance.GameOver();
             
         }
     }
@@ -61,5 +63,11 @@ public class playerController : MonoBehaviour , IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        updateHP();
+    }
+
+    void updateHP()
+    {
+        gameManager.instance.healthBar.fillAmount = (float)HP / maxHP; //hp =50 and maxhp = 50 -> 50/50=1 ///// hp = 25 and maxhp = 50 -> 25/50 = 0.5
     }
 }
